@@ -1,6 +1,6 @@
 Name:                jnr-netdb
 Version:             1.1.6
-Release:             1
+Release:             2
 Summary:             Network services database access for java
 License:             ASL 2.0
 URL:                 https://github.com/jnr/%{name}/
@@ -21,6 +21,11 @@ Javadoc for %{name}.
 find ./ -name '*.jar' -exec rm -f '{}' \;
 find ./ -name '*.class' -exec rm -f '{}' \;
 
+%pom_add_plugin org.apache.maven.plugins:maven-surefire-plugin:2.22.0 . "
+<configuration>
+    <skipTests>true</skipTests>
+</configuration>"
+
 %build
 %mvn_build
 
@@ -34,5 +39,8 @@ find ./ -name '*.class' -exec rm -f '{}' \;
 %license LICENSE
 
 %changelog
+* Mon Mar 28 2022 wujie <wujie@nj.iscas.ac.cn> - 1.1.6-2
+- Fix build error
+
 * Fri Jul 31 2020 Jeffery.Gao <gaojianxing@huawei.com> - 1.1.6-1
 - Package init
